@@ -1,6 +1,6 @@
 {
   "name": "hubot-salt-servers",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "create and delete servers via saltstack api",
   "main": "index.coffee",
   "author": "Todd Wells <todd@wells.ws> (https://github.com/twellspring)",
