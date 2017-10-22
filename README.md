@@ -8,12 +8,15 @@ Run the following command to install this module as a Hubot dependency
 
 ```
 $ npm install hubot-salt-servers --save
+$ npm install hubot-auth --save
 ```
 
 Add the **hubot-salt-servers** to your `external-scripts.json` (you may need to create this file).
 
 ```
-["hubot-salt-servers"]
+[  "hubot-auth",
+   "hubot-salt-servers"
+]
 ```
 
 ## Configuration

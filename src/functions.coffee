@@ -24,4 +24,12 @@ module.exports = (robot) ->
 
       return JSON.stringify(bodyObj)
 
+    restrictCommand: (msg, allowedRoles) ->
+        user = robot.brain.userForName(msg.message.user.name)
+        return false if robot.auth.isAdmin(user) ||   
+            robot.auth.hasRole(user, allowedRoles)
+
+         msg.reply "You do not have the correct permission for that command."
+         return true
+
     robot.saltstack = new Saltstack

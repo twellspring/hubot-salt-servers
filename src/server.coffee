@@ -12,10 +12,11 @@
 module.exports = (robot) ->
 
   robot.respond /create server ([\w-]+)( size )?([a-z]\d\.\w+)/i, (msg) ->
+    return if robot.saltstack.restrictCommand(msg,  ["developer","qa"])
     serverName = msg.match[1]
     serverSize = msg.match[3] ? "t2.small"
     profile = robot.saltstack.profile(serverSize)
-    httpURL = robot.saltstack.url('/run')
+    saltURL = robot.saltstack.url('/run')
 
     bodyObj =
       fun: 'cloud.profile'
@@ -25,7 +26,7 @@ module.exports = (robot) ->
     robot.logger.info "create server #{serverName} Started"
     msg.reply "Creating server #{serverName}.  This could take a few minutes."
 
-    msg.http(httpURL)
+    msg.http(saltURL)
       .headers('Content-Type': 'application/json')
       .post(robot.saltstack.postBody(bodyObj)) (err, res, body) ->
         try
