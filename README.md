@@ -1,6 +1,7 @@
 # Hubot: Salt Servers
 
-Create Create servers through saltstack
+Create servers through saltstack.  This is a functional example containing
+commands to create, update and delete servers
 
 ## Installation
 
@@ -11,7 +12,7 @@ $ npm install hubot-salt-servers --save
 $ npm install hubot-auth --save
 ```
 
-Add the **hubot-salt-servers** to your `external-scripts.json` (you may need to create this file).
+Add modules to your `external-scripts.json` (you may need to create this file).
 
 ```
 [  "hubot-auth",
@@ -31,3 +32,8 @@ HUBOT_SALT_SERVERS_MINION='myminion'
 HUBOT_SALT_SERVERS_PROFILE_BASE='us-west-2a_dev_'
 
 ```
+
+## Runtime configuration
+
+This example restricts access to these commands to admins or members of the `qa`
+or `developer` role.  See `help role` for how to add a slack user to a role.
